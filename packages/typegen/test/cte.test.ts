@@ -51,11 +51,14 @@ test(`statement with CTE`, async () => {
       
         /** - query: \`with abc as (select table_name as tname ... [truncated] ... abc join def on abc.tname = def.tschema\` */
         export interface Abc_Def {
-          /** regtype: \`name\` */
-          n: string | null
+          '@params': []
+          '@result': {
+            /** regtype: \`name\` */
+            n: string | null
       
-          /** regtype: \`name\` */
-          s: string | null
+            /** regtype: \`name\` */
+            s: string | null
+          }
         }
       }
       "
@@ -100,8 +103,11 @@ test(`statement with complex CTE`, async () => {
       
         /** - query: \`with abc as (select table_name from info... [truncated] ...on_schema.tables, abc) select * from def\` */
         export interface Def {
-          /** regtype: \`name\` */
-          table_schema: string | null
+          '@params': []
+          '@result': {
+            /** regtype: \`name\` */
+            table_schema: string | null
+          }
         }
       }
       "
@@ -144,8 +150,11 @@ test(`statement with confusingly-named CTE`, async () => {
       
         /** - query: \`with test_table1 as (select b as a from test_table2) select a from test_table1\` */
         export interface TestTable1 {
-          /** regtype: \`integer\` */
-          a: number | null
+          '@params': []
+          '@result': {
+            /** regtype: \`integer\` */
+            a: number | null
+          }
         }
       }
       "

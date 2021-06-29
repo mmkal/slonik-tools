@@ -43,10 +43,13 @@ export declare namespace queries {
 
   /** - query: `select * from types_test_table` */
   export interface TypesTestTable {
-    /** column: `types_test.types_test_table.foo`, not null: `true`, regtype: `integer` */
-    foo: number
+    '@params': []
+    '@result': {
+      /** column: `types_test.types_test_table.foo`, not null: `true`, regtype: `integer` */
+      foo: number
 
-    /** column: `types_test.types_test_table.bar`, regtype: `text` */
-    bar: string | null
+      /** column: `types_test.types_test_table.bar`, regtype: `text` */
+      bar: string | null
+    }
   }
 }

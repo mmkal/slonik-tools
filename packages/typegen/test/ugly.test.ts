@@ -56,12 +56,16 @@ test('prettier is optional', async () => {
       
           /** - query: \`select id, n from test_table\` */
           export interface TestTable {
+              '@params': [
+              ];
+              '@result': {
       
-              /** column: \`ugly_test.test_table.id\`, not null: \`true\`, regtype: \`integer\` */
-              id: number;
+                  /** column: \`ugly_test.test_table.id\`, not null: \`true\`, regtype: \`integer\` */
+                  id: number;
       
-              /** column: \`ugly_test.test_table.n\`, regtype: \`integer\` */
-              n: (number) | null;
+                  /** column: \`ugly_test.test_table.n\`, regtype: \`integer\` */
+                  n: (number) | null;
+              };
           }
       }
       "
@@ -108,12 +112,16 @@ test('prettier can fail', async () => {
       
           /** - query: \`select id, n from test_table\` */
           export interface TestTable {
+              '@params': [
+              ];
+              '@result': {
       
-              /** column: \`ugly_test.test_table.id\`, not null: \`true\`, regtype: \`integer\` */
-              id: number;
+                  /** column: \`ugly_test.test_table.id\`, not null: \`true\`, regtype: \`integer\` */
+                  id: number;
       
-              /** column: \`ugly_test.test_table.n\`, regtype: \`integer\` */
-              n: (number) | null;
+                  /** column: \`ugly_test.test_table.n\`, regtype: \`integer\` */
+                  n: (number) | null;
+              };
           }
       }
       "

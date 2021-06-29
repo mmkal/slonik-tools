@@ -44,14 +44,17 @@ test(`default type mappings`, async () => {
       
         /** - query: \`select null::timestamptz as a, null::uuid as b, null::void as c\` */
         export interface A_b_c {
-          /** regtype: \`timestamp with time zone\` */
-          a: number | null
+          '@params': []
+          '@result': {
+            /** regtype: \`timestamp with time zone\` */
+            a: number | null
       
-          /** regtype: \`uuid\` */
-          b: string | null
+            /** regtype: \`uuid\` */
+            b: string | null
       
-          /** regtype: \`void\` */
-          c: void
+            /** regtype: \`void\` */
+            c: void
+          }
         }
       }
       "

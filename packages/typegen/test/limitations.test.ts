@@ -110,14 +110,17 @@ test('duplicate columns', async () => {
       
         /** - query: \`select 1 as a, 'two' as a\` */
         export interface A_a {
-          /**
-           * Warning: 2 columns detected for field a!
-           *
-           * regtype: \`integer\`
-           *
-           * regtype: \`text\`
-           */
-          a: (number | null) | (string | null)
+          '@params': []
+          '@result': {
+            /**
+             * Warning: 2 columns detected for field a!
+             *
+             * regtype: \`integer\`
+             *
+             * regtype: \`text\`
+             */
+            a: (number | null) | (string | null)
+          }
         }
       }
       "
@@ -151,7 +154,7 @@ test('void queries', async () => {
       export default [
         sql<queries._void>\`update test_table set n = 0\`,
         sql<queries._void>\`insert into test_table values (0, 0)\`,
-        sql<queries._void>\`create table x (y int)\`,
+        sql\`create table x (y int)\`,
       ]
       
       export declare namespace queries {
@@ -161,9 +164,11 @@ test('void queries', async () => {
          * queries:
          * - \`update test_table set n = 0\`
          * - \`insert into test_table values (0, 0)\`
-         * - \`create table x (y int)\`
          */
-        export type _void = void
+        export interface _void {
+          '@params': []
+          '@result': {}
+        }
       }
       "
   `)
@@ -203,11 +208,14 @@ test('simple', async () => {
       
         /** - query: \`select 1 as a, 'two' as b\` */
         export interface A_b {
-          /** regtype: \`integer\` */
-          a: number | null
+          '@params': []
+          '@result': {
+            /** regtype: \`integer\` */
+            a: number | null
       
-          /** regtype: \`text\` */
-          b: string | null
+            /** regtype: \`text\` */
+            b: string | null
+          }
         }
       }
       "
